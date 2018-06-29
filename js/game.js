@@ -92,6 +92,7 @@ function letterGuess(letter) {
             alert("You've already guessed this letter!")
         }
     }
+    checkWin();
 }
 
 //check incorrect letter
@@ -102,6 +103,7 @@ function checkIncorrect(letter) {
         guessedLetters.textContent = incorrectLetterBank.join("");
         guessesRemaining.textContent = guessesLeft;
     }
+    checkLoss();
 }
 
 //check loss
@@ -110,10 +112,9 @@ function checkLoss() {
         losses++;
         gameRunning = false;
         userLosses.textContent = losses;
+        alert("YOU LOSE")
     }
 }
-
-checkLoss();
 
 //check win
 function checkWin() {
@@ -121,10 +122,9 @@ function checkWin() {
         wins++;
         gameRunning = false;
         userWins.textContent = wins;
+        alert("YOU WIN");
     }
 }
-
-checkWin();
 
 //add event listener for new game button
 newGameButton.addEventListener("click", newGame); 
