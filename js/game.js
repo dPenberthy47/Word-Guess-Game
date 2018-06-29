@@ -21,7 +21,7 @@ var guessesLeft = 0;
 var gameRunning = false;
 var pickedWord = "";
 var pickdWordPlaceholder = [];
-var guesseeLetterBank = [];
+var guessedLetterBank = [];
 var incorrectLetterBank = [];
 
 //create a new game function
@@ -35,7 +35,7 @@ function newgame() {
     //pick a new word
 
     pickedWord = console.log(Math.floor(Math.random() * artistsWordBank.length));
-    console.log(pickedWord);
+    
 
     //create placeholders out of new pickedWord
     for (var i = 0; i < pickedWord.length; i++) {
@@ -50,9 +50,9 @@ function newgame() {
     guessesRemaining.textContent = guessesLeft;
     placeholders.textContent = pickedWordPlaceholder.join('');
     guessedLetters.textCOntent = incorrectLetterBank;
-    console.log(pickedWord);
+   
 }
-console.log(pickedWord);
+
 //letterGuess function take sin the letteryou pressed and sees if it's in the selected word
 
 //check incorrect letter
