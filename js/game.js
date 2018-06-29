@@ -56,8 +56,8 @@ function newGame() {
 
 //letterGuess function take sin the letteryou pressed and sees if it's in the selected word
 function letterGuess(letter) {
-    console.log(letter); //don't want the game to run if game running is false
-    if (gameRunning && guessedLetterBank(letter) === -1) {
+    //don't want the game to run if game running is false
+      if (gameRunning && guessedLetterBank[letter] === -1) {
         //run game logic
         guessedLetterBank.push(letter);
 
@@ -65,19 +65,20 @@ function letterGuess(letter) {
 
         for (var i = 0; i < pickedWord.length; i++) {
             //convert both values to lower case so that I can compare them correctly
-            if (pickedWord[i].toLowerCase() === pickedWordPlaceholder.toLowerCase()) {
+            if (pickedWord[i].toLowerCase() === letter.toLowerCase()) {
                 //if a match, swap out that character in the placeholder with the actual letter
-                pickedWordPlaceholder[i] === pickedWord[i];
+                pickedWordPlaceholder[i] = pickedWord[i];
 
             }
         }
-
+        //sends the result of the for loop to the DOM
+        console.log(pickedWordPlaceholder);
         placeholders.textContent = pickedWordPlaceholder.join("");
-
+    
     }
-    else  {
-        if (gameRunning === false) {
-        alert("Cliock on the button to start the game!")
+   else  {
+        if (!gameRunning) {
+        alert("Click on the button to start the game!")
         } else {
             alert("You've already guessed this letter!")
         }
@@ -101,3 +102,10 @@ if ("") {
 newGameButton.addEventListener("click", newGame); 
 
 //add onkeyup event to trigger letterguess
+document.onkeyup = function(event) {
+    console.dir(event);
+    if (event.keyCode >= 48 && event.keyCode <= 90) {
+        letterGuess(event.key);
+    }
+}
+
