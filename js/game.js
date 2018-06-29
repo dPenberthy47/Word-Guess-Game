@@ -25,7 +25,7 @@ var guessedLetterBank = [];
 var incorrectLetterBank = [];
 
 //create a new game function
-function newgame() {
+function newGame() {
     gameRunning = true;
     guessesLeft = 12;
     guessedLetterBank = [];
@@ -33,8 +33,7 @@ function newgame() {
     pickedWordPlaceholder = [];
 
     //pick a new word
-
-    pickedWord = console.log(Math.floor(Math.random() * artistsWordBank.length));
+    pickedWord = artistsWordBank[Math.floor(Math.random() * artistsWordBank.length)];
     
 
     //create placeholders out of new pickedWord
@@ -48,7 +47,7 @@ function newgame() {
 
     //write all new game info to DOM
     guessesRemaining.textContent = guessesLeft;
-    placeholders.textContent = pickedWordPlaceholder.join('');
+    placeholders.textContent = pickedWordPlaceholder;
     guessedLetters.textCOntent = incorrectLetterBank;
    
 }
@@ -62,6 +61,6 @@ function newgame() {
 //check win
 
 //add event listener for new game button
-//***newGameButton.addEventListener("click", newGame);
+newGameButton.addEventListener("click", newGame); 
 
 //add onkeyup event to trigger letterguess
