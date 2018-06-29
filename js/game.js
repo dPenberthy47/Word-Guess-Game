@@ -34,14 +34,14 @@ function newGame() {
 
     //pick a new word
     pickedWord = artistsWordBank[Math.floor(Math.random() * artistsWordBank.length)];
-    
+    console.log(pickedWord);
 
     //create placeholders out of new pickedWord
     for (var i = 0; i < pickedWord.length; i++) {
         if (pickedWord[i] === " ") {
             pickedWordPlaceholder.push(" ");
         }   else {
-            pickedWordPlaceholder.push("_");
+            pickedWordPlaceholder.push("_ ");
         }
     }
 
