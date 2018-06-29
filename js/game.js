@@ -118,7 +118,7 @@ checkLoss();
 //check win
 function checkWin() {
     if (pickedWord.toLowerCase() === pickedWordPlaceholder.join('').toLowerCase()) {
-        win++;
+        wins++;
         gameRunning = false;
         userWins.textContent = wins;
     }
