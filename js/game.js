@@ -20,7 +20,7 @@ var losses = 0;
 var guessesLeft = 0;
 var gameRunning = false;
 var pickedWord = "";
-var pickdWordPlaceholder = [];
+var pickedWordPlaceholder = [];
 var guessedLetterBank = [];
 var incorrectLetterBank = [];
 
@@ -39,15 +39,15 @@ function newGame() {
     //create placeholders out of new pickedWord
     for (var i = 0; i < pickedWord.length; i++) {
         if (pickedWord[i] === " ") {
-            PickedWordPlaceholder.push(" ");
+            pickedWordPlaceholder.push(" ");
         }   else {
-            PickedWordPlaceholder.push("_");
+            pickedWordPlaceholder.push("_");
         }
     }
 
     //write all new game info to DOM
     guessesRemaining.textContent = guessesLeft;
-    placeholders.textContent = pickedWordPlaceholder;
+    placeholders.textContent = pickedWordPlaceholder.join('');
     guessedLetters.textCOntent = incorrectLetterBank;
    
 }
