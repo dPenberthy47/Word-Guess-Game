@@ -46,7 +46,7 @@ body{
 }
 
 #main-screen {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 #game-space {
@@ -55,9 +55,9 @@ body{
     margin-bottom: 10px;
     text-align: center;
     height: 400px;
-    background-color: white;
+    background: white;
     color: black;
-    border: black, 1px, solid;
+    border: white, 1px, solid;
     font-size:1.25em;
 }
 

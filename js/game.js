@@ -5,6 +5,8 @@ var userLosses = document.getElementById("losses");
 var guessesRemaining = document.getElementById("guessesRemaining");
 var placeholders = document.getElementById("wordSpace");
 var guessedLetters = document.getElementById("guessed-letters");
+var x = document.getElementById("myAudio");
+
 
 //create variables for game (wordBank wins lossess picked word guesses left game running guesssed letter nbank incorrect letter bank
 var artistsWordBank =
@@ -35,6 +37,9 @@ var pickedWord = "";
 var pickedWordPlaceholder = [];
 var guessedLetterBank = [];
 var incorrectLetterBank = [];
+
+x.loop
+
 
 //create a new game function
 function newGame() {
@@ -77,7 +82,7 @@ function letterGuess(letter) {
             if (pickedWord[i].toLowerCase() === letter.toLowerCase()) {
                 //if a match, swap out that character in the placeholder with the actual letter
                 pickedWordPlaceholder[i] = pickedWord[i];
-
+                guessedLetterBank.push(letter);
             }
         }
         //sends the result of the for loop to the DOM
@@ -86,14 +91,24 @@ function letterGuess(letter) {
     
     }
     else  {
-        if (!gameRunning) {
+        if (!gameRunning)  {
         alert("Click on the button to start the game!")
-        } else {
+            guessedLetterBank.reduce(letter);
+        
+        } else if (guessedLetterBank.indexOf(letter) <= 0) {
+            alert("please choose a different letter");
+            guessedLetterBank.reduce(letter);
+        } 
+        else {
             alert("You've already guessed this letter!")
+           
+
         }
     }
     
 }
+
+
 
 //check incorrect letter
 function checkIncorrect(letter) {
@@ -102,8 +117,11 @@ function checkIncorrect(letter) {
         incorrectLetterBank.push(letter);
         guessedLetters.textContent = incorrectLetterBank.join("");
         guessesRemaining.textContent = guessesLeft;
+
+        guessedLetterBank = incorrectLetterBank;
     }
     checkLoss();
+    
 }
 
 //check loss
@@ -112,7 +130,7 @@ function checkLoss() {
         losses++;
         gameRunning = false;
         userLosses.textContent = losses;
-        alert("YOU LOSE")
+        alert("YOU LOSE");
     }
     checkWin();
 }
@@ -126,6 +144,8 @@ function checkWin() {
         alert("YOU WIN");
     }
 }
+
+
 
 //add event listener for new game button
 newGameButton.addEventListener("click", newGame); 
