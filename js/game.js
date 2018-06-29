@@ -92,7 +92,7 @@ function letterGuess(letter) {
             alert("You've already guessed this letter!")
         }
     }
-    checkWin();
+    
 }
 
 //check incorrect letter
@@ -114,6 +114,7 @@ function checkLoss() {
         userLosses.textContent = losses;
         alert("YOU LOSE")
     }
+    checkWin();
 }
 
 //check win
