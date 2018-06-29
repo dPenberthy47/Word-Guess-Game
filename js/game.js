@@ -14,7 +14,9 @@ var artistsWordBank =
     "oh wonder",
     "great good fine ok",
     "journey",
-    "ark patrol"];
+    "ark patrol",
+    "disclosure",
+    ];
 var wins = 0;
 var losses = 0;
 var guessesLeft = 0;
@@ -39,7 +41,7 @@ function newGame() {
     //create placeholders out of new pickedWord
     for (var i = 0; i < pickedWord.length; i++) {
         if (pickedWord[i] === " ") {
-            pickedWordPlaceholder.push(" ");
+            pickedWordPlaceholder.push(" - ");
         }   else {
             pickedWordPlaceholder.push("_ ");
         }
@@ -48,18 +50,53 @@ function newGame() {
     //write all new game info to DOM
     guessesRemaining.textContent = guessesLeft;
     placeholders.textContent = pickedWordPlaceholder.join('');
-    guessedLetters.textCOntent = incorrectLetterBank;
+    guessedLetters.textContent = incorrectLetterBank;
    
 }
 
 //letterGuess function take sin the letteryou pressed and sees if it's in the selected word
+function letterGuess(letter) {
+    console.log(letter); //don't want the game to run if game running is false
+    if (gameRunning && guessedLetterBank(letter) === -1) {
+        //run game logic
+        guessedLetterBank.push(letter);
+
+        //check if guessed letter is in my picked word
+
+        for (var i = 0; i < pickedWord.length; i++) {
+            //convert both values to lower case so that I can compare them correctly
+            if (pickedWord[i].toLowerCase() === pickedWordPlaceholder.toLowerCase()) {
+                //if a match, swap out that character in the placeholder with the actual letter
+                pickedWordPlaceholder[i] === pickedWord[i];
+
+            }
+        }
+
+        placeholders.textContent = pickedWordPlaceholder.join("");
+
+    }
+    else  {
+        if (gameRunning === false) {
+        alert("Cliock on the button to start the game!")
+        } else {
+            alert("You've already guessed this letter!")
+        }
+    }
+}
 
 //check incorrect letter
+if ("") {
+
+} 
 
 //check loss
+if ("") {
 
+}
 //check win
+if ("") {
 
+}
 //add event listener for new game button
 newGameButton.addEventListener("click", newGame); 
 
