@@ -16,6 +16,16 @@ var artistsWordBank =
     "journey",
     "ark patrol",
     "disclosure",
+    "galimatias",
+    "kaskade",
+    "anberlin",
+    "paramore",
+    "marvin gaye",
+    "stevie wonder",
+    "van morrison",
+    "zedd",
+    "led zeppelin",
+    "common"
     ];
 var wins = 0;
 var losses = 0;
@@ -57,10 +67,9 @@ function newGame() {
 //letterGuess function take sin the letteryou pressed and sees if it's in the selected word
 function letterGuess(letter) {
     //don't want the game to run if game running is false
-      if (gameRunning && guessedLetterBank[letter] === -1) {
+      if (gameRunning === true && guessedLetterBank.indexOf(letter) === -1) {
         //run game logic
-        guessedLetterBank.push(letter);
-
+       
         //check if guessed letter is in my picked word
 
         for (var i = 0; i < pickedWord.length; i++) {
@@ -76,7 +85,7 @@ function letterGuess(letter) {
         placeholders.textContent = pickedWordPlaceholder.join("");
     
     }
-   else  {
+    else  {
         if (!gameRunning) {
         alert("Click on the button to start the game!")
         } else {
@@ -86,26 +95,47 @@ function letterGuess(letter) {
 }
 
 //check incorrect letter
-if ("") {
-
-} 
+function checkIncorrect(letter) {
+    if (pickedWordPlaceholder.indexOf(letter.toLowerCase()) === -1)  {
+        guessesLeft--;
+        incorrectLetterBank.push(letter);
+        guessedLetters.textContent = incorrectLetterBank.join("");
+        guessesRemaining.textContent = guessesLeft;
+    }
+}
 
 //check loss
-if ("") {
-
+function checkLoss() {
+    if (guessesLeft === 0) {
+        losses++;
+        gameRunning = false;
+        userLosses.textContent = losses;
+    }
 }
+
+checkLoss();
+
 //check win
-if ("") {
-
+function checkWin() {
+    if (pickedWord.toLowerCase() === pickedWordPlaceholder.join('').toLowerCase()) {
+        win++;
+        gameRunning = false;
+        userWins.textContent = wins;
+    }
 }
+
+checkWin();
+
 //add event listener for new game button
 newGameButton.addEventListener("click", newGame); 
 
 //add onkeyup event to trigger letterguess
 document.onkeyup = function(event) {
-    console.dir(event);
+    
     if (event.keyCode >= 48 && event.keyCode <= 90) {
         letterGuess(event.key);
+        checkIncorrect(event.key);
     }
 }
+
 
