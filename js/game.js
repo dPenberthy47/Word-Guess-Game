@@ -38,9 +38,6 @@ var pickedWordPlaceholder = [];
 var guessedLetterBank = [];
 var incorrectLetterBank = [];
 
-x.loop
-
-
 //create a new game function
 function newGame() {
     gameRunning = true;
@@ -76,33 +73,32 @@ function letterGuess(letter) {
         //run game logic
        
         //check if guessed letter is in my picked word
+        guessedLetterBank.push(letter);
 
         for (var i = 0; i < pickedWord.length; i++) {
             //convert both values to lower case so that I can compare them correctly
             if (pickedWord[i].toLowerCase() === letter.toLowerCase()) {
                 //if a match, swap out that character in the placeholder with the actual letter
                 pickedWordPlaceholder[i] = pickedWord[i];
-                guessedLetterBank.push(letter);
+                //push the letter into this bank
             }
         }
         //sends the result of the for loop to the DOM
         console.log(pickedWordPlaceholder);
-        placeholders.textContent = pickedWordPlaceholder.join("");
+        placeholders.textContent = pickedWordPlaceholder.join('');
     
-    }
-    else  {
+    } else  {
         if (!gameRunning)  {
         alert("Click on the button to start the game!")
             guessedLetterBank.reduce(letter);
         
         } else if (guessedLetterBank.indexOf(letter) <= 0) {
             alert("please choose a different letter");
-            guessedLetterBank.reduce(letter);
+            
         } 
-        else {
-            alert("You've already guessed this letter!")
-           
-
+        else (placeholders.indexOf(letter) <= 0)
+         {
+            guessedLetterBank.reduce(letter);
         }
     }
     
@@ -115,10 +111,9 @@ function checkIncorrect(letter) {
     if (pickedWordPlaceholder.indexOf(letter.toLowerCase()) === -1)  {
         guessesLeft--;
         incorrectLetterBank.push(letter);
+        guessedLetterBank.push(letter);
         guessedLetters.textContent = incorrectLetterBank.join("");
         guessesRemaining.textContent = guessesLeft;
-
-        guessedLetterBank = incorrectLetterBank;
     }
     checkLoss();
     
